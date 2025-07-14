@@ -36,6 +36,11 @@ server {
     }
 
     location / {
+      # localhost:3000에서 iframe 허용
+      add_header Content-Security-Policy "frame-ancestors *" always;
+      # 또는 X-Frame-Options 헤더 제거
+      proxy_hide_header X-Frame-Options;
+
       proxy_pass http://web:3000;
       include proxy.conf;
     }

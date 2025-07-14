@@ -1,6 +1,5 @@
 'use client'
 import { useCallback } from 'react'
-import Link from 'next/link'
 import AccountDropdown from './account-dropdown'
 import AppNav from './app-nav'
 import DatasetNav from './dataset-nav'
@@ -10,7 +9,6 @@ import ExploreNav from './explore-nav'
 import ToolsNav from './tools-nav'
 import { WorkspaceProvider } from '@/context/workspace-context'
 import { useAppContext } from '@/context/app-context'
-import DifyLogo from '@/app/components/base/logo/dify-logo'
 import WorkplaceSelector from '@/app/components/header/account-dropdown/workplace-selector'
 import useBreakpoints, { MediaType } from '@/hooks/use-breakpoints'
 import { useProviderContext } from '@/context/provider-context'
@@ -46,33 +44,34 @@ const Header = () => {
       <div className=''>
         <div className='flex items-center justify-between px-2'>
           <div className='flex items-center'>
-            <Link href="/apps" className='flex h-8 shrink-0 items-center justify-center px-0.5'>
-              {systemFeatures.branding.enabled && systemFeatures.branding.workspace_logo
-                ? <img
-                  src={systemFeatures.branding.workspace_logo}
-                  className='block h-[22px] w-auto object-contain'
-                  alt='logo'
-                />
-                : <DifyLogo />}
-            </Link>
-            <div className='mx-1.5 shrink-0 font-light text-divider-deep'>/</div>
+            {/* <Link href="/apps" className='flex h-8 shrink-0 items-center justify-center px-0.5'> */}
+            {/*  {systemFeatures.branding.enabled && systemFeatures.branding.workspace_logo */}
+            {/*    ? <img */}
+            {/*      src={systemFeatures.branding.workspace_logo} */}
+            {/*      className='block h-[22px] w-auto object-contain' */}
+            {/*      alt='logo' */}
+            {/*    /> */}
+            {/*    : <DifyLogo />} */}
+            {/* </Link> */}
+            {/* <div className='mx-1.5 shrink-0 font-light text-divider-deep'>/</div> */}
             <WorkspaceProvider>
-              <WorkplaceSelector />
+              <WorkplaceSelector/>
             </WorkspaceProvider>
-            {enableBilling ? <PlanBadge allowHover sandboxAsUpgrade plan={plan.type} onClick={handlePlanClick} /> : <LicenseNav />}
+            {enableBilling ? <PlanBadge allowHover sandboxAsUpgrade plan={plan.type} onClick={handlePlanClick}/>
+              : <LicenseNav/>}
           </div>
           <div className='flex items-center'>
             <div className='mr-2'>
-              <PluginsNav />
+              <PluginsNav/>
             </div>
-            <AccountDropdown />
+            <AccountDropdown/>
           </div>
         </div>
         <div className='my-1 flex items-center justify-center space-x-1'>
-          {!isCurrentWorkspaceDatasetOperator && <ExploreNav className={navClassName} />}
-          {!isCurrentWorkspaceDatasetOperator && <AppNav />}
-          {(isCurrentWorkspaceEditor || isCurrentWorkspaceDatasetOperator) && <DatasetNav />}
-          {!isCurrentWorkspaceDatasetOperator && <ToolsNav className={navClassName} />}
+          {!isCurrentWorkspaceDatasetOperator && <ExploreNav className={navClassName}/>}
+          {!isCurrentWorkspaceDatasetOperator && <AppNav/>}
+          {(isCurrentWorkspaceEditor || isCurrentWorkspaceDatasetOperator) && <DatasetNav/>}
+          {!isCurrentWorkspaceDatasetOperator && <ToolsNav className={navClassName}/>}
         </div>
       </div>
     )
@@ -81,33 +80,34 @@ const Header = () => {
   return (
     <div className='flex h-[56px] items-center'>
       <div className='flex min-w-0 flex-[1]  items-center pl-3 pr-2 min-[1280px]:pr-3'>
-        <Link href="/apps" className='flex h-8 shrink-0 items-center justify-center px-0.5'>
-          {systemFeatures.branding.enabled && systemFeatures.branding.workspace_logo
-            ? <img
-              src={systemFeatures.branding.workspace_logo}
-              className='block h-[22px] w-auto object-contain'
-              alt='logo'
-            />
-            : <DifyLogo />}
-        </Link>
-        <div className='mx-1.5 shrink-0 font-light text-divider-deep'>/</div>
+        {/* <Link href="/apps" className='flex h-8 shrink-0 items-center justify-center px-0.5'> */}
+        {/*  {systemFeatures.branding.enabled && systemFeatures.branding.workspace_logo */}
+        {/*    ? <img */}
+        {/*      src={systemFeatures.branding.workspace_logo} */}
+        {/*      className='block h-[22px] w-auto object-contain' */}
+        {/*      alt='logo' */}
+        {/*    /> */}
+        {/*    : <DifyLogo/>} */}
+        {/* </Link> */}
+        {/* <div className='mx-1.5 shrink-0 font-light text-divider-deep'>/</div> */}
         <WorkspaceProvider>
-          <WorkplaceSelector />
+          <WorkplaceSelector/>
         </WorkspaceProvider>
-        {enableBilling ? <PlanBadge allowHover sandboxAsUpgrade plan={plan.type} onClick={handlePlanClick} /> : <LicenseNav />}
+        {enableBilling ? <PlanBadge allowHover sandboxAsUpgrade plan={plan.type} onClick={handlePlanClick}/>
+          : <LicenseNav/>}
       </div>
       <div className='flex items-center space-x-2'>
-        {!isCurrentWorkspaceDatasetOperator && <ExploreNav className={navClassName} />}
-        {!isCurrentWorkspaceDatasetOperator && <AppNav />}
-        {(isCurrentWorkspaceEditor || isCurrentWorkspaceDatasetOperator) && <DatasetNav />}
-        {!isCurrentWorkspaceDatasetOperator && <ToolsNav className={navClassName} />}
+        {!isCurrentWorkspaceDatasetOperator && <ExploreNav className={navClassName}/>}
+        {!isCurrentWorkspaceDatasetOperator && <AppNav/>}
+        {(isCurrentWorkspaceEditor || isCurrentWorkspaceDatasetOperator) && <DatasetNav/>}
+        {!isCurrentWorkspaceDatasetOperator && <ToolsNav className={navClassName}/>}
       </div>
       <div className='flex min-w-0 flex-[1] items-center justify-end pl-2 pr-3 min-[1280px]:pl-3'>
-        <EnvNav />
+        <EnvNav/>
         <div className='mr-2'>
-          <PluginsNav />
+          <PluginsNav/>
         </div>
-        <AccountDropdown />
+        <AccountDropdown/>
       </div>
     </div>
   )
